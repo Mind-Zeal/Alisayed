@@ -1,0 +1,391 @@
+@use 'sass:math';
+@import 'zero_style.scss';
+@import 'mixins.scss';
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap');
+//Font
+$font: 'Roboto', sans-serif;
+//Container-width
+[class*="__container"] {
+	max-width: rem(1365);
+	margin: 0 auto;
+}
+.title {
+	@include adaptiv-value("font-size", 60, 35, 3);
+	@include adaptiv-value("margin-bottom", 45, 28, 3);
+	font-weight: 300;
+	color: #fff;
+	span {
+		font-weight: 900;
+	}
+}
+body {
+	background-color: #f3f3f3;
+	&._lock {
+		overflow: hidden;
+	}
+}
+.wrapper {
+	min-height: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+
+.main {
+	flex: 1 1 auto;
+}
+
+h1 {
+	font-weight: 300;
+	@include adaptiv-value("font-size", 53, 32, 3);
+	span:first-child {
+		font-weight: 600;
+	}
+	span:last-child {
+		font-weight: 400;
+	}
+	@include adaptiv-value("margin-bottom", 60, 30, 3);
+	max-width: rem(700);
+}
+.webdesign-page {
+	&__body {
+		display: flex;
+		@media (max-width: 1092px) {
+			flex-direction: column;
+		}
+	}
+	&__left-img {
+		position: relative;
+		flex: 1 1 prc(910, 1365);
+		order:1;
+		@media (max-width: 1092px) {
+			@include adaptiv-value("min-height", 720, 450, 1);
+			width: 100%;
+			order:2;
+		}
+		img{
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			@include objf(cover);
+		}
+	}
+	&__right-text {
+		order:2;
+		height: 100%;
+		flex: 1 1 prc(455, 1365);
+		@include adaptiv-value("padding-top", 55, 30, 3);
+		@include adaptiv-value("padding-bottom", 55, 30, 3);
+		@include adaptiv-value("padding-left", 55, 30, 3);
+		padding-right: rem(20);
+		@media (max-width: 1092px) {
+			order:1;
+		}
+	}
+	&__burger {
+		@include adaptiv-value("margin-bottom", 70, 45, 3);
+		display: block;
+		visibility: visible;
+		opacity: 1;
+		cursor: pointer;
+		width: 33px;
+		height: 29px;
+		z-index: 15;
+		position: relative;
+		&::before, &::after, span {
+			position: absolute;
+			left: 0;
+			height: 10%;
+			width: 100%;
+			@include transition(all, 0.3s, ease, 0s);
+			background-color: #3a4245;
+		}
+		&::before, &::after{
+			content: "";
+		}
+		&::before {
+			top: 0;
+		}
+		&::after {
+			bottom: 0;
+		}
+		span {
+			top: 50%;
+			@include translate(0px, -50%);
+		}
+	}
+	&__text {
+		color: #3a4245;
+		@include adaptiv-value("font-size", 24, 18, 3);
+		@include adaptiv-value("margin-bottom", 125, 85, 3);
+		span{
+			@include adaptiv-value("margin-bottom", 40, 20, 3);
+		}
+		max-width: rem(900);
+	}
+}
+//----------------------------------------------------------------------
+.text {
+	@include adaptiv-value("font-size", 21, 16, 3);
+	color: #fff;
+}
+.btn {
+	display: flex;
+	padding: rem(20) rem(40);
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	border-radius: rem(15);
+	border: 1px solid #fff;
+	color: #fff;
+	max-width: rem(300);
+	@include adaptiv-value("margin-top", 60, 45, 3);
+	@media (max-width: 426px) {
+		max-width: rem(200);
+		padding: rem(15) rem(25);
+		font-size: rem(18);
+	}
+}
+.main-page {
+	&__body {
+		display: flex;
+		@media (max-width: 768px) {
+			flex-direction: column;
+		}
+	}
+	&__left-section {
+		flex: 1 1 prc(615, 1365);
+		@include adaptiv-value("padding-top", 70, 40, 3);
+		@include adaptiv-value("padding-left", 60, 35, 3);
+		background: url("../img/Left-img2.png") 0 0 / cover fixed no-repeat;
+	}
+	&__left-section-of-text {
+		@include adaptiv-value("margin-bottom", 70, 40, 3);
+		max-width: rem(1010);
+		margin-right: rem(25);
+	}
+	&__left-section-title {}
+	&__left-section-text {}
+	&__right-section {
+		flex: 1 1 prc(750, 1365);
+		display: flex;
+		flex-direction: column;
+	}
+	&__right-section-strarting {
+		@include adaptiv-value("padding-top", 70, 40, 3);
+		@include adaptiv-value("padding-left", 55, 30, 3);
+		max-width: rem(1000);
+		padding-right: rem(15);
+		min-width: 100%;
+		@include adaptiv-value("padding-bottom", 70, 40, 3);
+		background: url("../img/back-to.png") 0 0 / cover fixed no-repeat;
+		flex: 1 1 50%;
+	}
+	&__right-section-strarting-title {
+		color: #262f32;
+	}
+	&__right-section-strarting-text {
+		color: #262f32;
+	}
+	&__right-section-strarting-button {
+		color: #262f32;
+	}
+	&__right-section-strarting-button {
+		border: 1px solid #262f32;
+		position: relative;
+
+		&:before {
+			transition: 0.45s;
+			z-index: 0;
+			content: '';
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			@include translate(-50%, -50%);
+			width: 0;
+			height: 0;
+		}
+		&:hover {
+			transition: 0.45s;
+			&:before {
+				border-radius: rem(13);
+				height: 101%;
+				width: 100%;
+				background-color: #262f32;
+			}
+			span {
+				color: #fff;
+				z-index: 2;
+			}
+		}
+	}
+
+	&__right-section-dummy {
+		flex: 1 1 50%;
+		min-width: 100%;
+		@include adaptiv-value("padding-top", 70, 40, 3);
+		max-width: rem(1150);
+		padding-right: rem(15);
+		@include adaptiv-value("padding-left", 55, 30, 3);
+		@include adaptiv-value("padding-bottom", 70, 40, 3);
+		background: url("../img/musick-img.png") 0 0 / cover fixed no-repeat;
+	}
+	&__right-section-dummy-title {}
+	&__right-section-dummy-text {}
+	&__right-section-dummy-button {
+		position: relative;
+		&:before {
+			transition: 0.45s;
+			z-index: 0;
+			content: '';
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			@include translate(-50%, -50%);
+			width: 0;
+			height: 0;
+		}
+		&:hover {
+			transition: 0.45s;
+			&:before {
+				border-radius: rem(13);
+				height: 101%;
+				width: 100%;
+				background-color: #fff;
+			}
+			span {
+				color: #262f32;
+				z-index: 2;
+			}
+		}
+	}
+}
+//----------------------------------------------------------------------
+
+.footer {
+	&__body {
+		display: flex;
+		@media (max-width: 768px) {
+			flex-direction: column;
+		}
+	}
+	&__left {
+		background: url("../img/women-img.png") 50% 50%/ cover scroll no-repeat;
+		@include adaptiv-value("padding-top", 70, 40, 3);
+		@include adaptiv-value("padding-left", 50, 0, 3);
+		padding-right: rem(20);
+		flex: 1 1 prc(455, 1365);
+		display: flex;
+		flex-direction: column;
+		@media (max-width: 768px) {
+			background: url("../img/women-img.png") 50% 50%/ cover fixed no-repeat;
+			padding-left: rem(15);
+			padding-right: rem(15);
+		}
+	}
+	&__left-title {
+		max-width: rem(650);
+		margin: 0;
+		flex: 1 1 auto;
+		@include adaptiv-value("font-size", 60, 25, 3);
+		@media (max-width: 768px) {
+			@include adaptiv-value("margin-bottom", 90, 50, 1);
+		}
+	}
+	&__left-logo {
+		@include adaptiv-value("margin-bottom", 30, 15, 3);
+	}
+	&__left-second-title {
+		@include adaptiv-value("margin-bottom", 20, 10, 3);
+		@include adaptiv-value("font-size", 60, 25, 3);
+	}
+	&__left-text {
+		font-size: rem(22);
+		color: #fff;
+		@include adaptiv-value("padding-bottom", 70, 40, 3);
+	}
+	&__right {
+		background: url("../img/last-img.png") 50% 50%/ cover scroll no-repeat;
+		@include adaptiv-value("padding-top", 70, 40, 3);
+		@include adaptiv-value("padding-left", 50, 30, 3);
+		padding-right: rem(15);
+		flex: 1 1 prc(910, 1365);
+		@media (max-width: 768px) {
+			padding-left: rem(15);
+			padding-right: rem(15);
+		}
+	}
+	&__right-title {
+		@include adaptiv-value("margin-bottom", 50, 20, 3);
+	}
+	&__right-form {
+		max-width: rem(620);
+		@include adaptiv-value("margin-bottom", 90, 60, 3);
+	}
+	&__right-form-inputs{
+		display: flex;
+		gap: rem(15);
+		margin-bottom: rem(15);
+		background-color: none;
+		@media (max-width: 426px) {
+			flex-direction: column;
+		}
+	}
+	&__right-form-name {
+		background: none;
+		border-radius: rem(15);
+		height: rem(60);
+		flex: 1 1 50%;
+		border: 1px solid #fff;
+		padding: rem(16) rem(25) rem(10) rem(25);
+		&::placeholder {
+			font-size: rem(22);
+			color: #fff;
+		}
+	}
+	&__right-form-email {
+		background: none;
+		border-radius: rem(15);
+		height: rem(60);
+		flex: 1 1 50%;
+		border: 1px solid #fff;
+		padding: rem(16) rem(25) rem(10) rem(25);
+		&::placeholder {
+			font-size: rem(22);
+			color: #fff;
+		}
+	}
+	&__right-form-message {
+		background: none;
+		border-radius: rem(15);
+		width: 100%;
+		max-width: rem(620);
+		background-color: none;
+		border: 1px solid #fff;
+		padding: rem(15) rem(25);
+		&::placeholder {
+			font-size: rem(22);
+			color: #fff;
+		}
+	}
+	&__right-connect-page {
+		@include adaptiv-value("padding-bottom", 70, 40, 3);
+	}
+	&__right-first-text {
+		@include adaptiv-value("margin-bottom", 20, 15, 3);
+		font-size: rem(22);
+		color: #fff;
+	}
+	&__right-icons {
+		@include adaptiv-value("margin-bottom", 45, 20, 3);
+	}
+	&__right-icon-facebook {}
+	&__right-icon-dribble {}
+	&__right-icon-twitter {}
+	&__right-second-text {
+		font-size: rem(22);
+		color: #fff;
+	}
+}
