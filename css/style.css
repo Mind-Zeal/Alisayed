@@ -457,7 +457,7 @@ h1 span:last-child {
   -webkit-box-flex: 1;
       -ms-flex: 1 1 auto;
           flex: 1 1 auto;
-  font-size: calc(25px + 35 * ((100vw - 320px) / 1045));
+  font-size: calc(35px + 25 * ((100vw - 320px) / 1045));
 }
 @media (max-width: 768px) {
   .footer__left-title {
@@ -474,7 +474,7 @@ h1 span:last-child {
 }
 .footer__left-second-title {
   margin-bottom: calc(10px + 10 * ((100vw - 320px) / 1045));
-  font-size: calc(25px + 35 * ((100vw - 320px) / 1045));
+  font-size: calc(35px + 25 * ((100vw - 320px) / 1045));
 }
 .footer__left-text {
   font-size: 1.0476190476rem;
